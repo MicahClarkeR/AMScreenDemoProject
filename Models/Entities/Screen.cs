@@ -9,7 +9,5 @@ namespace AMScreenInterview.Models.Entities
     {
         public int Id { get; set; }
         public string Postcode { get; set; }
-        public int ModelId { get; set; }
-        public Model Model { get; set; }
     }
 }
