@@ -42,6 +42,15 @@ namespace AMScreenInterview.Models
                             Postcode = "G1 91A"
                         }
                     );
+
+
+                    context.Engineer.AddRange(
+                        new Engineer
+                        {
+                            Name = "John Smith"
+                        }
+                    );
+
                     context.SaveChanges();
                 }
             }
