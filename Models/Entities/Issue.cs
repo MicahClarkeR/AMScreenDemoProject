@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AMScreenInterview.Models.Entities
 {
-    public class Issues
+    public class Issue
     {
         public int Id { get; set; }
         public string Description { get; set; }
