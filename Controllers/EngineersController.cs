@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AMScreenInterview.Data;
 using AMScreenInterview.Models.Entities;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace AMScreenInterview.Controllers
 {
@@ -17,6 +18,20 @@ namespace AMScreenInterview.Controllers
         public EngineersController(AMScreenContext context)
         {
             _context = context;
+        }
+
+        public async Task<IActionResult> Jobs(int id)
+        {
+            var engineerJobs = _context.EngineerJobs.Where(exp => exp.EngineerId == id).ToArray();
+            
+            foreach(var job in engineerJobs)
+            {
+                job.Issue = await _context.Issue.FindAsync(job.IssueId);
+            }
+
+            ViewData["Jobs"] = engineerJobs;
+
+            return View();
         }
 
         // GET: Engineers
