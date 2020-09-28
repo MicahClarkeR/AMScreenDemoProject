@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AMScreenInterview.Migrations
 {
     [DbContext(typeof(AMScreenContext))]
-    [Migration("20200927135920_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200927234911_InitialCreate2")]
+    partial class InitialCreate2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,16 +38,23 @@ namespace AMScreenInterview.Migrations
 
             modelBuilder.Entity("AMScreenInterview.Models.Entities.EngineerJobs", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("EngineerId")
                         .HasColumnType("int");
 
                     b.Property<int>("IssueId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.HasKey("Id");
 
-                    b.HasKey("EngineerId", "IssueId");
+                    b.HasIndex("EngineerId");
 
                     b.HasIndex("IssueId");
 

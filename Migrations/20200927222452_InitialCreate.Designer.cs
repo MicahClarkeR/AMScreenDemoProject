@@ -4,14 +4,16 @@ using AMScreenInterview.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AMScreenInterview.Migrations
 {
     [DbContext(typeof(AMScreenContext))]
-    partial class AMScreenContextModelSnapshot : ModelSnapshot
+    [Migration("20200927222452_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,23 +38,16 @@ namespace AMScreenInterview.Migrations
 
             modelBuilder.Entity("AMScreenInterview.Models.Entities.EngineerJobs", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("EngineerId")
                         .HasColumnType("int");
 
                     b.Property<int>("IssueId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("EngineerId");
+                    b.HasKey("EngineerId", "IssueId");
 
                     b.HasIndex("IssueId");
 

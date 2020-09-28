@@ -94,7 +94,6 @@ namespace AMScreenInterview.Models
                             DateReported = new DateTime(2020, 5, 13)
                         }
                     );
-
                     context.SaveChanges();
                 }
             }
