@@ -20,10 +20,17 @@ namespace AMScreenInterview.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Display a view containing all job details for the given engineer.
+        /// </summary>
+        /// <param name="id">ID of engineer in database.</param>
+        /// <returns>View</returns>
         public async Task<IActionResult> Jobs(int id)
         {
+            // Get all current engineer jobs
             var engineerJobs = _context.EngineerJobs.Where(exp => exp.EngineerId == id).ToArray();
             
+            // Assign get the issue for the job
             foreach(var job in engineerJobs)
             {
                 job.Issue = await _context.Issue.FindAsync(job.IssueId);
@@ -31,6 +38,7 @@ namespace AMScreenInterview.Controllers
 
             ViewData["Jobs"] = engineerJobs;
 
+            // Display view
             return View();
         }
 
