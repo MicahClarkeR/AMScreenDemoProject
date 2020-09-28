@@ -9,13 +9,16 @@ namespace AMScreenInterview.Data
         {
         }
 
+        /// <summary>
+        /// Set up the database model, using fluent API to set up primary and composite keys
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<EngineerJobs>()
-                .HasKey(x => new { x.EngineerId, x.IssueId });
-
+            // Set up screenissue composite key, shared amongst IssueId and ScreenId
             modelBuilder.Entity<ScreenIssues>()
                 .HasKey(x => new { x.IssueId, x.ScreenId });
+
         }
 
         public DbSet<Engineer> Engineer { get; set; }
