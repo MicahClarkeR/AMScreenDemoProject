@@ -1,0 +1,33 @@
+﻿@using AMScreenInterview.Models.Entities 
+
+@{
+    ViewData["Title"] = "Report an Issue";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Report">
+            <div class="form-group">
+
+                <label class="control-label" for="screenId">Screen Postcode: </label>
+                <select class="form-control valid" name="screenId">
+                    @foreach (Screen item in (Array)ViewData["Screens"])
+                    {
+                        <option value="@item.Id">@item.Postcode</option>
+                    }
+                </select>
+
+                <label class="control-label" for="issueId">Issue: </label>
+                <select class="form-control valid" name="issueId">
+                    @foreach (Issue item in (Array)ViewData["Issues"])
+                    {
+                        <option value="@item.Id">@item.Description</option>
+                    }
+                </select>
+                <input class="form-control valid" type="submit" value="Submit"/>
+
+            </div>
+        </form>
+    </div>
+</div>

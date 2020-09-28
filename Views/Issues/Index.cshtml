@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AMScreenInterview.Models.Entities.ScreenIssues>
+
+@{
+    ViewData["Title"] = "Latest Issues";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Screen</th>
+            <th>Postcode</th>
+            <th>Issue</th>
+            <th>Reported On</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Screen.Id
+                </td>
+                <td>
+                    @item.Screen.Postcode
+                </td>
+                <td>
+                    @item.Issue.Description
+                </td>
+                <td>
+                    @item.DateReported.Day/@item.DateReported.Month/@item.DateReported.Year
+                </td>
+                <td>
+                    <a asp-action="AssignEngineer" asp-route-id="@item.ScreenId">Assign to engineer</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

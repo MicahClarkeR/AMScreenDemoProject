@@ -1,0 +1,24 @@
+﻿@using AMScreenInterview.Models.Entities
+
+@{
+    ViewData["Title"] = "Assign Issue to Engineer";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AssignEngineer">
+            <div class="form-group">
+                <input name="issueId" hidden value="@ViewData["IssueId"]" />
+                <label for="engineerId">Engineer: </label>
+                <select name="engineerId">
+                    @foreach (Engineer item in (Array)ViewData["Engineers"])
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <input type="submit" />
+            </div>
+        </form>
+    </div>
+</div>
