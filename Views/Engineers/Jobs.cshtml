@@ -1,0 +1,27 @@
+﻿@using AMScreenInterview.Models.Entities 
+
+@{ 
+    ViewData["Title"] = "View Jobs";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Issue</th>
+            <th>Reported</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(EngineerJobs item in (Array)ViewData["Jobs"])
+        {
+        <tr>
+            <td>
+                @item.Issue.Description
+            </td>
+            <td>
+                @item.Date
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
