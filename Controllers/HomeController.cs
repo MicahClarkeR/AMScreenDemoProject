@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AMScreenInterview.Models;
+using AMScreenInterview.Data;
 
 namespace AMScreenInterview.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly AMScreenContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(AMScreenContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
